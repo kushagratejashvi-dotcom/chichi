@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>A Secret For You 💌</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body{
+    width:100%;
+    height:100%;
+}
+
+body{
+    overflow:hidden;
+    font-family:Georgia,serif;
+    color:white;
+
+    background:
+        radial-gradient(
+            circle at 50% 40%,
+            #40184f 0%,
+            #1a0b29 45%,
+            #05020b 100%
+        );
+}
+
+
+/* =========================
+   STARS
+========================= */
+
+#stars{
+    position:fixed;
+    inset:0;
+    width:100%;
+    height:100%;
+    pointer-events:none;
+}
+
+.star{
+    position:absolute;
+
+    width:2px;
+    height:2px;
+
+    background:white;
+
+    border-radius:50%;
+
+    animation:
+        twinkle 3s infinite alternate;
+}
+
+@keyframes twinkle{
+
+    from{
+        opacity:.15;
+        transform:scale(.7);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1.5);
+    }
+
+}
+
+
+/* =========================
+   MAIN SCREEN
+========================= */
+
+.screen{
+    position:relative;
+
+    z-index:5;
+
+    width:100%;
+    height:100vh;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    padding:20px;
+
+    text-align:center;
+}
+
+.intro{
+    transition:1s;
+}
+
+.intro.hide{
+    opacity:0;
+
+    transform:scale(.7);
+
+    filter:blur(12px);
+
+    pointer-events:none;
+}
+
+
+/* =========================
+   TEXT
+========================= */
+
+.small{
+    margin-bottom:20px;
+
+    font-size:11px;
+
+    letter-spacing:5px;
+
+    color:#f5b6d8;
+}
+
+h1{
+    margin-bottom:12px;
+
+    font-size:
+        clamp(42px,10vw,75px);
+}
+
+.subtitle{
+    color:#cbb7cf;
+
+    font-size:15px;
+}
+
+
+/* =========================
+   ENVELOPE
+========================= */
+
+.envelope{
+
+    position:relative;
+
+    width:270px;
+    height:190px;
+
+    margin:40px auto 25px;
+
+    cursor:pointer;
+
+    filter:
+        drop-shadow(
+            0 20px 35px
+            rgba(0,0,0,.5)
+        );
+
+    transition:.6s;
+}
+
+.envelope:hover{
+
+    transform:
+        translateY(-8px)
+        scale(1.03);
+}
+
+
+/* Envelope body */
+
+.env-body{
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+        linear-gradient(
+            145deg,
+            #f8b4d9,
+            #d66a9d
+        );
+
+    border-radius:8px;
+
+    box-shadow:
+        0 0 35px
+        rgba(244,114,182,.3);
+}
+
+
+/* Bottom folds */
+
+.fold-left,
+.fold-right{
+
+    position:absolute;
+
+    bottom:0;
+
+    width:0;
+    height:0;
+
+    border-style:solid;
+}
+
+.fold-left{
+
+    left:0;
+
+    border-width:
+        95px 135px 0 0;
+
+    border-color:
+        #c65389
+        transparent
+        transparent
+        transparent;
+}
+
+.fold-right{
+
+    right:0;
+
+    border-width:
+        95px 0 0 135px;
+
+    border-color:
+        #c65389
+        transparent
+        transparent
+        transparent;
+}
+
+
+/* =========================
+   ENVELOPE FLAP
+========================= */
+
+.flap{
+
+    position:absolute;
+
+    top:0;
+    left:0;
+
+    width:0;
+    height:0;
+
+    border-left:
+        135px solid transparent;
+
+    border-right:
+        135px solid transparent;
+
+    border-top:
+        100px solid #ef8fc0;
+
+    transform-origin:top;
+
+    transition:1s;
+
+    z-index:5;
+}
+
+.envelope.open .flap{
+
+    transform:
+        rotateX(180deg);
+}
+
+
+/* =========================
+   LETTER
+========================= */
+
+.letter{
+
+    position:absolute;
+
+    left:50%;
+    bottom:8px;
+
+    width:225px;
+    height:165px;
+
+    transform:
+        translateX(-50%);
+
+    padding:20px;
+
+    background:#fff8fc;
+
+    color:#3b1730;
+
+    border-radius:5px;
+
+    transition:1s;
+
+    z-index:2;
+}
+
+.envelope.open .letter{
+
+    transform:
+        translate(-50%,-125px);
+}
+
+.letter-mark{
+
+    margin-bottom:10px;
+
+    font-size:30px;
+}
+
+.tap{
+
+    color:#e8a0c3;
+
+    font-size:13px;
+}
+
+
+/* =========================
+   SECRET SCREEN
+========================= */
+
+.secret{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:20;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    padding:25px;
+
+    background:
+
+        radial-gradient(
+            circle,
+            rgba(236,72,153,.2),
+            rgba(5,2,11,.97) 70%
+        );
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:1.5s;
+
+    overflow-y:auto;
+}
+
+.secret.show{
+
+    opacity:1;
+
+    visibility:visible;
+}
+
+.secret-card{
+
+    width:
+        min(650px,100%);
+
+    text-align:center;
+
+    transform:
+        translateY(40px);
+
+    transition:1s;
+}
+
+.secret.show .secret-card{
+
+    transform:
+        translateY(0);
+}
+
+
+/* =========================
+   HEART
+========================= */
+
+.heart{
+
+    font-size:70px;
+
+    animation:
+        heartbeat 1.2s infinite;
+}
+
+@keyframes heartbeat{
+
+    0%,
+    100%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.18);
+    }
+
+}
+
+
+/* =========================
+   SECRET TITLE
+========================= */
+
+.secret-card h2{
+
+    margin:20px 0;
+
+    color:#f5b6d8;
+
+    font-size:
+        clamp(35px,8vw,65px);
+}
+
+
+/* =========================
+   MESSAGE
+========================= */
+
+.message{
+
+    color:#ddd0dc;
+
+    font-family:Arial,sans-serif;
+
+    font-size:17px;
+
+    line-height:1.9;
+}
+
+
+/* =========================
+   SIGNATURE
+========================= */
+
+.signature{
+
+    margin-top:25px;
+
+    color:#f5b6d8;
+
+    font-family:Georgia,serif;
+
+    font-style:italic;
+}
+
+
+/* =========================
+   RESTART BUTTON
+========================= */
+
+.restart{
+
+    margin-top:30px;
+
+    padding:12px 24px;
+
+    border:
+        1px solid #d979aa;
+
+    border-radius:30px;
+
+    background:transparent;
+
+    color:white;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.restart:hover{
+
+    background:
+        rgba(217,121,170,.15);
+}
+
+
+/* =========================
+   HEART PARTICLES
+========================= */
+
+.particle{
+
+    position:fixed;
+
+    z-index:30;
+
+    pointer-events:none;
+
+    font-size:18px;
+
+    animation:
+        floatUp 3s linear forwards;
+}
+
+@keyframes floatUp{
+
+    0%{
+
+        opacity:1;
+
+        transform:
+            translateY(0)
+            scale(.5);
+    }
+
+    100%{
+
+        opacity:0;
+
+        transform:
+            translateY(-300px)
+            translateX(var(--x))
+            scale(1.5);
+    }
+
+}
+
+
+/* =========================
+   MUSIC BUTTON
+========================= */
+
+.music{
+
+    position:fixed;
+
+    z-index:50;
+
+    top:15px;
+    right:15px;
+
+    width:45px;
+    height:45px;
+
+    border-radius:50%;
+
+    border:
+        1px solid
+        rgba(255,255,255,.25);
+
+    background:
+        rgba(0,0,0,.35);
+
+    color:white;
+
+    cursor:pointer;
+
+    font-size:18px;
+
+    backdrop-filter:
+        blur(10px);
+
+    transition:.3s;
+}
+
+.music.playing{
+
+    box-shadow:
+
+        0 0 15px
+        rgba(244,114,182,.6),
+
+        0 0 35px
+        rgba(244,114,182,.25);
+
+    transform:
+        scale(1.08);
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:600px){
+
+    .envelope{
+
+        transform:
+            scale(.85);
+
+        margin-top:25px;
+
+        margin-bottom:10px;
+    }
+
+    .envelope:hover{
+
+        transform:
+            scale(.88);
+    }
+
+    .message{
+
+        font-size:15px;
+    }
+
+    .secret{
+
+        padding:20px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     STARS
+========================= -->
+
+<div id="stars"></div>
+
+
+<!-- =========================
+     MUSIC
+========================= -->
+
+<audio
+    id="music"
+    autoplay
+    loop
+    preload="auto">
+
+    <source
+        src="music.mp3"
+        type="audio/mp3">
+
+</audio>
+
+
+<!-- =========================
+     MUSIC BUTTON
+========================= -->
+
+<button
+    class="music"
+    id="musicButton"
+    type="button"
+    onclick="toggleMusic()">
+
+    ♫
+
+</button>
+
+
+<!-- =========================
+     INTRO
+========================= -->
+
+<div class="screen">
+
+    <div
+        class="intro"
+        id="intro">
+
+
+        <div class="small">
+            A LITTLE SECRET
+        </div>
+
+
+        <h1>
+            For chichi💌
+        </h1>
+
+
+        <p class="subtitle">
+             something here for you...
+        </p>
+
+
+        <!-- ENVELOPE -->
+
+        <div
+            class="envelope"
+            id="envelope"
+            onclick="openEnvelope()">
+
+
+            <div class="env-body"></div>
+
+
+            <div class="letter">
+
+                <div class="letter-mark">
+                    ♡
+                </div>
+
+                <p>
+                    open
+                </p>
+
+            </div>
+
+
+            <div class="fold-left"></div>
+
+            <div class="fold-right"></div>
+
+            <div class="flap"></div>
+
+
+        </div>
+
+
+        <div class="tap">
+            Tap the envelope
+        </div>
+
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     SECRET
+========================= -->
+
+<div
+    class="secret"
+    id="secret">
+
+
+    <div class="secret-card">
+
+
+        <div class="heart">
+            💗
+        </div>
+
+
+        <h2>
+            lillu ka birthday h
+        </h2>
+
+
+        <div
+            class="message"
+            id="message">
+        </div>
+
+
+        <div class="signature">
+
+            — party kab de rha h??
+            
+
+        </div>
+
+
+        <button
+            class="restart"
+            type="button"
+            onclick="closeSecret()">
+
+            Keep this secret 🤫
+
+        </button>
+
+
+    </div>
+
+
+</div>
+
+
+
+<script>
+
+/* =====================================================
+   STARS
+===================================================== */
+
+const starContainer =
+    document.getElementById("stars");
+
+
+for(let i = 0; i < 140; i++){
+
+    const star =
+        document.createElement("div");
+
+
+    star.className =
+        "star";
+
+
+    star.style.left =
+        Math.random() * 100 + "%";
+
+
+    star.style.top =
+        Math.random() * 100 + "%";
+
+
+    star.style.animationDelay =
+        Math.random() * 3 + "s";
+
+
+    star.style.opacity =
+        Math.random();
+
+
+    starContainer.appendChild(star);
+
+}
+
+
+/* =====================================================
+   MUSIC
+===================================================== */
+
+const music =
+    document.getElementById("music");
+
+
+const musicButton =
+    document.getElementById("musicButton");
+
+
+let musicPlaying = false;
+
+
+/* Try autoplay */
+
+window.addEventListener("load", () => {
+
+    music.volume = 0.35;
+
+
+    music.play()
+
+        .then(() => {
+
+            musicPlaying = true;
+
+            musicButton.textContent =
+                "🔊";
+
+            musicButton.classList.add(
+                "playing"
+            );
+
+        })
+
+        .catch(() => {
+
+            /*
+              Mobile browsers may block
+              autoplay with sound.
+            */
+
+            musicPlaying = false;
+
+        });
+
+});
+
+
+/* First user interaction fallback */
+
+function unlockMusic(){
+
+    if(!musicPlaying){
+
+        music.volume = 0.35;
+
+        music.play()
+
+            .then(() => {
+
+                musicPlaying = true;
+
+                musicButton.textContent =
+                    "🔊";
+
+                musicButton.classList.add(
+                    "playing"
+                );
+
+            })
+
+            .catch(() => {});
+
+    }
+
+}
+
+
+/* Listen for first touch */
+
+document.addEventListener(
+    "touchstart",
+    unlockMusic,
+    { once:true }
+);
+
+
+/* Listen for first click */
+
+document.addEventListener(
+    "click",
+    unlockMusic,
+    { once:true }
+);
+
+
+/* Music button */
+
+function toggleMusic(){
+
+    if(musicPlaying){
+
+        music.pause();
+
+        musicPlaying = false;
+
+        musicButton.textContent =
+            "♫";
+
+        musicButton.classList.remove(
+            "playing"
+        );
+
+    }
+
+    else{
+
+        music.play()
+
+            .then(() => {
+
+                musicPlaying = true;
+
+                musicButton.textContent =
+                    "🔊";
+
+                musicButton.classList.add(
+                    "playing"
+                );
+
+            })
+            .catch(() => {});
+
+    }
+
+}
+
+
+/* =====================================================
+   OPEN ENVELOPE
+===================================================== */
+
+let opened = false;
+
+
+function openEnvelope(){
+
+    if(opened){
+        return;
+    }
+
+
+    opened = true;
+
+
+    /* Start music from envelope tap */
+
+    unlockMusic();
+
+
+    const envelope =
+        document.getElementById(
+            "envelope"
+        );
+
+
+    const intro =
+        document.getElementById(
+            "intro"
+        );
+
+
+    envelope.classList.add(
+        "open"
+    );
+
+
+    createHearts(35);
+
+
+    setTimeout(() => {
+
+        intro.classList.add(
+            "hide"
+        );
+
+    },1000);
+
+
+    setTimeout(() => {
+
+        document
+            .getElementById("secret")
+            .classList.add(
+                "show"
+            );
+
+
+        typeMessage();
+
+    },2200);
+
+}
+
+
+/* =====================================================
+   TYPEWRITER
+===================================================== */
+
+function typeMessage(){
+
+    const text =
+
+        "Hey... 💗\n\n" +
+
+        "happy birthday lillu "
+
+    const element =
+        document.getElementById(
+            "message"
+        );
+
+
+    let index = 0;
+
+
+    function type(){
+
+        if(index >= text.length){
+            return;
+        }
+
+
+        if(text[index] === "\n"){
+
+            element.innerHTML +=
+                "<br>";
+
+            index++;
+
+        }
+
+        else{
+
+            element.innerHTML +=
+                text[index];
+
+            index++;
+
+        }
+
+
+        setTimeout(
+            type,
+            28
+        );
+
+    }
+
+
+    type();
+
+}
+
+
+/* =====================================================
+   HEART PARTICLES
+===================================================== */
+
+function createHearts(amount){
+
+    for(
+        let i = 0;
+        i < amount;
+        i++
+    ){
+
+        setTimeout(() => {
+
+            const heart =
+                document.createElement(
+                    "div"
+                );
+
+
+            heart.className =
+                "particle";
+
+
+            heart.textContent =
+                Math.random() > .5
+                ? "♥"
+                : "✨";
+
+
+            heart.style.left =
+                Math.random() * 100 + "vw";
+
+
+            heart.style.bottom =
+                "20px";
+
+
+            heart.style.setProperty(
+                "--x",
+                (Math.random() - .5) * 200 + "px"
+            );
+
+
+            heart.style.fontSize =
+                (12 + Math.random() * 20) + "px";
+
+
+            document.body.appendChild(
+                heart
+            );
+
+
+            setTimeout(() => {
+
+                heart.remove();
+
+            },3000);
+
+
+        },i * 60);
+
+    }
+
+}
+
+
+/* =====================================================
+   CLOSE SECRET
+===================================================== */
+
+function closeSecret(){
+
+    document
+        .getElementById("secret")
+        .classList.remove(
+            "show"
+        );
+
+
+    setTimeout(() => {
+
+        document
+            .getElementById("intro")
+            .classList.remove(
+                "hide"
+            );
+
+
+        document
+            .getElementById("envelope")
+            .classList.remove(
+                "open"
+            );
+
+
+        document
+            .getElementById("message")
+            .innerHTML = "";
+
+
+        opened = false;
+
+    },1000);
+
+}
+
+</script>
+
+</body>
+</html>
