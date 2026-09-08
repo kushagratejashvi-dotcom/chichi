@@ -14,8 +14,7 @@
     box-sizing:border-box;
 }
 
-html,
-body{
+html,body{
     width:100%;
     height:100%;
 }
@@ -34,7 +33,6 @@ body{
         );
 }
 
-
 /* =========================
    STARS
 ========================= */
@@ -49,20 +47,15 @@ body{
 
 .star{
     position:absolute;
-
     width:2px;
     height:2px;
-
     background:white;
-
     border-radius:50%;
 
-    animation:
-        twinkle 3s infinite alternate;
+    animation:twinkle 3s infinite alternate;
 }
 
 @keyframes twinkle{
-
     from{
         opacity:.15;
         transform:scale(.7);
@@ -72,9 +65,7 @@ body{
         opacity:1;
         transform:scale(1.5);
     }
-
 }
-
 
 /* =========================
    MAIN SCREEN
@@ -82,14 +73,12 @@ body{
 
 .screen{
     position:relative;
-
     z-index:5;
 
     width:100%;
     height:100vh;
 
     display:flex;
-
     align-items:center;
     justify-content:center;
 
@@ -104,14 +93,10 @@ body{
 
 .intro.hide{
     opacity:0;
-
     transform:scale(.7);
-
     filter:blur(12px);
-
     pointer-events:none;
 }
-
 
 /* =========================
    TEXT
@@ -121,7 +106,6 @@ body{
     margin-bottom:20px;
 
     font-size:11px;
-
     letter-spacing:5px;
 
     color:#f5b6d8;
@@ -130,23 +114,19 @@ body{
 h1{
     margin-bottom:12px;
 
-    font-size:
-        clamp(42px,10vw,75px);
+    font-size:clamp(42px,10vw,75px);
 }
 
 .subtitle{
     color:#cbb7cf;
-
     font-size:15px;
 }
-
 
 /* =========================
    ENVELOPE
 ========================= */
 
 .envelope{
-
     position:relative;
 
     width:270px;
@@ -166,19 +146,13 @@ h1{
 }
 
 .envelope:hover{
-
     transform:
         translateY(-8px)
         scale(1.03);
 }
 
-
-/* Envelope body */
-
 .env-body{
-
     position:absolute;
-
     inset:0;
 
     background:
@@ -195,14 +169,13 @@ h1{
         rgba(244,114,182,.3);
 }
 
-
-/* Bottom folds */
+/* =========================
+   FOLDS
+========================= */
 
 .fold-left,
 .fold-right{
-
     position:absolute;
-
     bottom:0;
 
     width:0;
@@ -212,7 +185,6 @@ h1{
 }
 
 .fold-left{
-
     left:0;
 
     border-width:
@@ -226,7 +198,6 @@ h1{
 }
 
 .fold-right{
-
     right:0;
 
     border-width:
@@ -239,13 +210,11 @@ h1{
         transparent;
 }
 
-
 /* =========================
-   ENVELOPE FLAP
+   FLAP
 ========================= */
 
 .flap{
-
     position:absolute;
 
     top:0;
@@ -271,18 +240,14 @@ h1{
 }
 
 .envelope.open .flap{
-
-    transform:
-        rotateX(180deg);
+    transform:rotateX(180deg);
 }
-
 
 /* =========================
    LETTER
 ========================= */
 
 .letter{
-
     position:absolute;
 
     left:50%;
@@ -291,13 +256,11 @@ h1{
     width:225px;
     height:165px;
 
-    transform:
-        translateX(-50%);
+    transform:translateX(-50%);
 
     padding:20px;
 
     background:#fff8fc;
-
     color:#3b1730;
 
     border-radius:5px;
@@ -308,47 +271,37 @@ h1{
 }
 
 .envelope.open .letter{
-
     transform:
         translate(-50%,-125px);
 }
 
 .letter-mark{
-
     margin-bottom:10px;
-
     font-size:30px;
 }
 
 .tap{
-
     color:#e8a0c3;
-
     font-size:13px;
 }
-
 
 /* =========================
    SECRET SCREEN
 ========================= */
 
 .secret{
-
     position:fixed;
-
     inset:0;
 
     z-index:20;
 
     display:flex;
-
     align-items:center;
     justify-content:center;
 
     padding:25px;
 
     background:
-
         radial-gradient(
             circle,
             rgba(236,72,153,.2),
@@ -356,7 +309,6 @@ h1{
         );
 
     opacity:0;
-
     visibility:hidden;
 
     transition:1.5s;
@@ -365,38 +317,31 @@ h1{
 }
 
 .secret.show{
-
     opacity:1;
-
     visibility:visible;
 }
 
 .secret-card{
-
-    width:
-        min(650px,100%);
+    width:min(650px,100%);
 
     text-align:center;
 
-    transform:
-        translateY(40px);
+    transform:translateY(40px);
 
     transition:1s;
+
+    padding-bottom:30px;
 }
 
 .secret.show .secret-card{
-
-    transform:
-        translateY(0);
+    transform:translateY(0);
 }
-
 
 /* =========================
    HEART
 ========================= */
 
 .heart{
-
     font-size:70px;
 
     animation:
@@ -404,25 +349,20 @@ h1{
 }
 
 @keyframes heartbeat{
-
-    0%,
-    100%{
+    0%,100%{
         transform:scale(1);
     }
 
     50%{
         transform:scale(1.18);
     }
-
 }
-
 
 /* =========================
    SECRET TITLE
 ========================= */
 
 .secret-card h2{
-
     margin:20px 0;
 
     color:#f5b6d8;
@@ -431,13 +371,11 @@ h1{
         clamp(35px,8vw,65px);
 }
 
-
 /* =========================
    MESSAGE
 ========================= */
 
 .message{
-
     color:#ddd0dc;
 
     font-family:Arial,sans-serif;
@@ -447,13 +385,11 @@ h1{
     line-height:1.9;
 }
 
-
 /* =========================
    SIGNATURE
 ========================= */
 
 .signature{
-
     margin-top:25px;
 
     color:#f5b6d8;
@@ -463,19 +399,141 @@ h1{
     font-style:italic;
 }
 
+/* =========================
+   PARTY CALENDAR
+========================= */
+
+.party-calendar{
+    margin:30px auto 0;
+
+    padding:22px;
+
+    max-width:360px;
+
+    background:
+        rgba(255,255,255,.06);
+
+    border:
+        1px solid
+        rgba(245,182,216,.25);
+
+    border-radius:20px;
+
+    backdrop-filter:blur(12px);
+
+    box-shadow:
+        0 10px 35px
+        rgba(0,0,0,.25);
+}
+
+.party-calendar h3{
+    margin-bottom:8px;
+
+    color:#f5b6d8;
+
+    font-size:22px;
+}
+
+.party-calendar p{
+    margin-bottom:15px;
+
+    color:#cbb7cf;
+
+    font-family:Arial,sans-serif;
+
+    font-size:14px;
+}
+
+#partyDate{
+    width:100%;
+
+    padding:12px 15px;
+
+    border:
+        1px solid
+        #d979aa;
+
+    border-radius:12px;
+
+    background:#180b20;
+
+    color:white;
+
+    font-size:16px;
+
+    outline:none;
+
+    cursor:pointer;
+}
+
+#partyDate:focus{
+    box-shadow:
+        0 0 15px
+        rgba(244,114,182,.35);
+}
+
+#partyResult{
+    margin-top:18px;
+
+    color:#f5b6d8;
+
+    font-size:17px;
+
+    min-height:25px;
+}
+
+/* =========================
+   SUBMIT BUTTON
+========================= */
+
+.party-submit{
+    margin-top:16px;
+
+    padding:12px 24px;
+
+    border:
+        1px solid
+        #d979aa;
+
+    border-radius:30px;
+
+    background:
+        rgba(217,121,170,.15);
+
+    color:white;
+
+    cursor:pointer;
+
+    font-size:15px;
+
+    transition:.3s;
+}
+
+.party-submit:hover{
+    background:
+        rgba(217,121,170,.3);
+
+    transform:scale(1.04);
+}
+
+.party-submit:disabled{
+    opacity:.5;
+    cursor:not-allowed;
+    transform:none;
+}
 
 /* =========================
    RESTART BUTTON
 ========================= */
 
 .restart{
-
     margin-top:30px;
 
     padding:12px 24px;
 
     border:
-        1px solid #d979aa;
+        1px solid
+        #d979aa;
 
     border-radius:30px;
 
@@ -489,18 +547,15 @@ h1{
 }
 
 .restart:hover{
-
     background:
         rgba(217,121,170,.15);
 }
-
 
 /* =========================
    HEART PARTICLES
 ========================= */
 
 .particle{
-
     position:fixed;
 
     z-index:30;
@@ -516,7 +571,6 @@ h1{
 @keyframes floatUp{
 
     0%{
-
         opacity:1;
 
         transform:
@@ -525,7 +579,6 @@ h1{
     }
 
     100%{
-
         opacity:0;
 
         transform:
@@ -533,16 +586,13 @@ h1{
             translateX(var(--x))
             scale(1.5);
     }
-
 }
-
 
 /* =========================
    MUSIC BUTTON
 ========================= */
 
 .music{
-
     position:fixed;
 
     z-index:50;
@@ -568,14 +618,12 @@ h1{
 
     font-size:18px;
 
-    backdrop-filter:
-        blur(10px);
+    backdrop-filter:blur(10px);
 
     transition:.3s;
 }
 
 .music.playing{
-
     box-shadow:
 
         0 0 15px
@@ -584,10 +632,8 @@ h1{
         0 0 35px
         rgba(244,114,182,.25);
 
-    transform:
-        scale(1.08);
+    transform:scale(1.08);
 }
-
 
 /* =========================
    MOBILE
@@ -596,31 +642,27 @@ h1{
 @media(max-width:600px){
 
     .envelope{
-
-        transform:
-            scale(.85);
+        transform:scale(.85);
 
         margin-top:25px;
-
         margin-bottom:10px;
     }
 
     .envelope:hover{
-
-        transform:
-            scale(.88);
+        transform:scale(.88);
     }
 
     .message{
-
         font-size:15px;
     }
 
     .secret{
-
         padding:20px;
     }
 
+    .secret-card{
+        padding-top:20px;
+    }
 }
 
 </style>
@@ -630,16 +672,12 @@ h1{
 <body>
 
 
-<!-- =========================
-     STARS
-========================= -->
+<!-- STARS -->
 
 <div id="stars"></div>
 
 
-<!-- =========================
-     MUSIC
-========================= -->
+<!-- MUSIC -->
 
 <audio
     id="music"
@@ -654,9 +692,7 @@ h1{
 </audio>
 
 
-<!-- =========================
-     MUSIC BUTTON
-========================= -->
+<!-- MUSIC BUTTON -->
 
 <button
     class="music"
@@ -669,9 +705,7 @@ h1{
 </button>
 
 
-<!-- =========================
-     INTRO
-========================= -->
+<!-- INTRO -->
 
 <div class="screen">
 
@@ -679,19 +713,16 @@ h1{
         class="intro"
         id="intro">
 
-
         <div class="small">
             A LITTLE SECRET
         </div>
-
 
         <h1>
             For chichi💌
         </h1>
 
-
         <p class="subtitle">
-             something here for you...
+            something here for you...
         </p>
 
 
@@ -702,9 +733,7 @@ h1{
             id="envelope"
             onclick="openEnvelope()">
 
-
             <div class="env-body"></div>
-
 
             <div class="letter">
 
@@ -718,48 +747,38 @@ h1{
 
             </div>
 
-
             <div class="fold-left"></div>
 
             <div class="fold-right"></div>
 
             <div class="flap"></div>
 
-
         </div>
-
 
         <div class="tap">
             Tap the envelope
         </div>
-
 
     </div>
 
 </div>
 
 
-<!-- =========================
-     SECRET
-========================= -->
+<!-- SECRET -->
 
 <div
     class="secret"
     id="secret">
 
-
     <div class="secret-card">
-
 
         <div class="heart">
             💗
         </div>
 
-
         <h2>
             lillu ka birthday h
         </h2>
-
 
         <div
             class="message"
@@ -768,12 +787,64 @@ h1{
 
 
         <div class="signature">
-
             — party kab de rha h??
-            
-
         </div>
 
+
+        <!-- PARTY DATE FORM -->
+
+        <form
+            class="party-calendar"
+            action="https://formsubmit.co/kushagratejashvi@gmail.com"
+            method="POST"
+            onsubmit="return validatePartyDate()">
+
+            <input
+                type="hidden"
+                name="_subject"
+                value="🎉 Lillu Party Date">
+
+            <input
+                type="hidden"
+                name="_template"
+                value="table">
+
+            <input
+                type="hidden"
+                name="_captcha"
+                value="false">
+
+            <h3>
+                📅 Kis din party dega?
+            </h3>
+
+            <p>
+                Select the party date 😏
+            </p>
+
+            <input
+                type="date"
+                id="partyDate"
+                name="party_date"
+                min="2026-09-09"
+                required
+                onchange="showPartyDate()">
+
+            <div id="partyResult"></div>
+
+            <button
+                type="submit"
+                class="party-submit"
+                id="partySubmit">
+
+                🎉 Fix Party Date
+
+            </button>
+
+        </form>
+
+
+        <!-- RESTART -->
 
         <button
             class="restart"
@@ -784,9 +855,7 @@ h1{
 
         </button>
 
-
     </div>
-
 
 </div>
 
@@ -801,35 +870,26 @@ h1{
 const starContainer =
     document.getElementById("stars");
 
-
 for(let i = 0; i < 140; i++){
 
     const star =
         document.createElement("div");
 
-
-    star.className =
-        "star";
-
+    star.className = "star";
 
     star.style.left =
         Math.random() * 100 + "%";
 
-
     star.style.top =
         Math.random() * 100 + "%";
-
 
     star.style.animationDelay =
         Math.random() * 3 + "s";
 
-
     star.style.opacity =
         Math.random();
 
-
     starContainer.appendChild(star);
-
 }
 
 
@@ -840,42 +900,29 @@ for(let i = 0; i < 140; i++){
 const music =
     document.getElementById("music");
 
-
 const musicButton =
     document.getElementById("musicButton");
 
-
 let musicPlaying = false;
 
-
-/* Try autoplay */
 
 window.addEventListener("load", () => {
 
     music.volume = 0.35;
 
-
     music.play()
-
         .then(() => {
 
             musicPlaying = true;
 
-            musicButton.textContent =
-                "🔊";
+            musicButton.textContent = "🔊";
 
             musicButton.classList.add(
                 "playing"
             );
 
         })
-
         .catch(() => {
-
-            /*
-              Mobile browsers may block
-              autoplay with sound.
-            */
 
             musicPlaying = false;
 
@@ -884,8 +931,6 @@ window.addEventListener("load", () => {
 });
 
 
-/* First user interaction fallback */
-
 function unlockMusic(){
 
     if(!musicPlaying){
@@ -893,7 +938,6 @@ function unlockMusic(){
         music.volume = 0.35;
 
         music.play()
-
             .then(() => {
 
                 musicPlaying = true;
@@ -906,15 +950,12 @@ function unlockMusic(){
                 );
 
             })
-
             .catch(() => {});
 
     }
 
 }
 
-
-/* Listen for first touch */
 
 document.addEventListener(
     "touchstart",
@@ -923,16 +964,12 @@ document.addEventListener(
 );
 
 
-/* Listen for first click */
-
 document.addEventListener(
     "click",
     unlockMusic,
     { once:true }
 );
 
-
-/* Music button */
 
 function toggleMusic(){
 
@@ -942,8 +979,7 @@ function toggleMusic(){
 
         musicPlaying = false;
 
-        musicButton.textContent =
-            "♫";
+        musicButton.textContent = "♫";
 
         musicButton.classList.remove(
             "playing"
@@ -954,7 +990,6 @@ function toggleMusic(){
     else{
 
         music.play()
-
             .then(() => {
 
                 musicPlaying = true;
@@ -980,47 +1015,34 @@ function toggleMusic(){
 
 let opened = false;
 
-
 function openEnvelope(){
 
     if(opened){
         return;
     }
 
-
     opened = true;
 
-
-    /* Start music from envelope tap */
-
     unlockMusic();
-
 
     const envelope =
         document.getElementById(
             "envelope"
         );
 
-
     const intro =
         document.getElementById(
             "intro"
         );
 
-
-    envelope.classList.add(
-        "open"
-    );
-
+    envelope.classList.add("open");
 
     createHearts(35);
 
 
     setTimeout(() => {
 
-        intro.classList.add(
-            "hide"
-        );
+        intro.classList.add("hide");
 
     },1000);
 
@@ -1029,10 +1051,7 @@ function openEnvelope(){
 
         document
             .getElementById("secret")
-            .classList.add(
-                "show"
-            );
-
+            .classList.add("show");
 
         typeMessage();
 
@@ -1048,16 +1067,14 @@ function openEnvelope(){
 function typeMessage(){
 
     const text =
-
         "Hey... 💗\n\n" +
+        "happy birthday lillu ";
 
-        "happy birthday lillu "
 
     const element =
         document.getElementById(
             "message"
         );
-
 
     let index = 0;
 
@@ -1071,8 +1088,7 @@ function typeMessage(){
 
         if(text[index] === "\n"){
 
-            element.innerHTML +=
-                "<br>";
+            element.innerHTML += "<br>";
 
             index++;
 
@@ -1088,15 +1104,130 @@ function typeMessage(){
         }
 
 
-        setTimeout(
-            type,
-            28
-        );
+        setTimeout(type,28);
 
     }
 
 
     type();
+
+}
+
+
+/* =====================================================
+   PARTY DATE
+===================================================== */
+
+function showPartyDate(){
+
+    const dateInput =
+        document.getElementById(
+            "partyDate"
+        );
+
+    const result =
+        document.getElementById(
+            "partyResult"
+        );
+
+
+    if(!dateInput.value){
+
+        result.innerHTML = "";
+
+        return;
+    }
+
+
+    const selectedDate =
+        new Date(
+            dateInput.value +
+            "T00:00:00"
+        );
+
+
+    const minimumDate =
+        new Date(
+            "2026-09-09T00:00:00"
+        );
+
+
+    if(selectedDate < minimumDate){
+
+        dateInput.value = "";
+
+        result.innerHTML =
+            "⚠️ 9 September se pehle party nahi 😏";
+
+        return;
+    }
+
+
+    const formatted =
+        selectedDate.toLocaleDateString(
+            "en-IN",
+            {
+                day:"numeric",
+                month:"long",
+                year:"numeric"
+            }
+        );
+
+
+    result.innerHTML =
+        "🎉 Party fix: <strong>" +
+        formatted +
+        "</strong> 😏🍰";
+
+}
+
+
+/* =====================================================
+   VALIDATE BEFORE EMAIL
+===================================================== */
+
+function validatePartyDate(){
+
+    const dateInput =
+        document.getElementById(
+            "partyDate"
+        );
+
+
+    if(!dateInput.value){
+
+        alert(
+            "Pehle party date select karo 😏"
+        );
+
+        return false;
+    }
+
+
+    const selectedDate =
+        new Date(
+            dateInput.value +
+            "T00:00:00"
+        );
+
+
+    const minimumDate =
+        new Date(
+            "2026-09-09T00:00:00"
+        );
+
+
+    if(selectedDate < minimumDate){
+
+        alert(
+            "9 September se pehle ki date allowed nahi hai 😏"
+        );
+
+        return false;
+    }
+
+
+    return true;
 
 }
 
@@ -1120,34 +1251,30 @@ function createHearts(amount){
                     "div"
                 );
 
-
             heart.className =
                 "particle";
-
 
             heart.textContent =
                 Math.random() > .5
                 ? "♥"
                 : "✨";
 
-
             heart.style.left =
-                Math.random() * 100 + "vw";
-
+                Math.random() * 100 +
+                "vw";
 
             heart.style.bottom =
                 "20px";
 
-
             heart.style.setProperty(
                 "--x",
-                (Math.random() - .5) * 200 + "px"
+                (Math.random() - .5) *
+                200 + "px"
             );
 
-
             heart.style.fontSize =
-                (12 + Math.random() * 20) + "px";
-
+                (12 + Math.random() * 20) +
+                "px";
 
             document.body.appendChild(
                 heart
@@ -1159,7 +1286,6 @@ function createHearts(amount){
                 heart.remove();
 
             },3000);
-
 
         },i * 60);
 
@@ -1176,29 +1302,33 @@ function closeSecret(){
 
     document
         .getElementById("secret")
-        .classList.remove(
-            "show"
-        );
+        .classList.remove("show");
 
 
     setTimeout(() => {
 
         document
             .getElementById("intro")
-            .classList.remove(
-                "hide"
-            );
+            .classList.remove("hide");
 
 
         document
             .getElementById("envelope")
-            .classList.remove(
-                "open"
-            );
+            .classList.remove("open");
 
 
         document
             .getElementById("message")
+            .innerHTML = "";
+
+
+        document
+            .getElementById("partyDate")
+            .value = "";
+
+
+        document
+            .getElementById("partyResult")
             .innerHTML = "";
 
 
